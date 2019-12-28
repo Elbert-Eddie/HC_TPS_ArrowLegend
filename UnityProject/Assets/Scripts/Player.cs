@@ -12,19 +12,31 @@ public class Player : MonoBehaviour
     private Animator ani;
     #endregion
 
+    private LevelManager levelManager;  // 關卡管理器
+
     #region 事件
     private void Start()
     {     
         rig = GetComponent<Rigidbody>();                                 // 剛體欄位 = 取得原件<泛型>()
+        ani = GetComponent<Animator>();
         // target = GameObject.Find("目標").GetComponent<Transform>();   // 寫法1
         target = GameObject.Find("目標").transform;                      // 寫法2
         joy = GameObject.Find("虛擬搖桿").GetComponent<Joystick>();
-        ani = GetComponent<Animator>();
+        levelManager = FindObjectOfType<LevelManager>();                 // 透過類型尋找物件
     }
 
     private void FixedUpdate()
     {
         Move();
+    }
+
+    // 觸發事件 : 碰到勾選 IsTrigger 物件執行一次
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "傳送區域")
+        {
+            levelManager.StartCoroutine("LoadLevel");
+        }
     }
 
     #endregion
