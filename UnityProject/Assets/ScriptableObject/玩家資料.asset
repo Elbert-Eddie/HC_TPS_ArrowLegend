@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: "\u73A9\u5BB6\u8CC7\u6599"
   m_EditorClassIdentifier: 
   hp: 200
+  hpMax: 200

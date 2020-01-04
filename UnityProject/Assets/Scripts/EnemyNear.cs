@@ -56,6 +56,7 @@ public class EnemyNear : Enemy
         {
             print("打到了" + hit.collider.gameObject);
             // 取得玩家元件.受傷方法(怪物.攻擊力)
+            hit.collider.GetComponent<Player>().Hit(data.attack);
         }
     }
 
