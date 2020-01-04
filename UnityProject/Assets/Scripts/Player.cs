@@ -5,6 +5,8 @@ public class Player : MonoBehaviour
     #region 欄位
     [Header("移動速度"), Range(1, 200)]
     public float speed = 20;
+    [Header("玩家資料")]
+    public PlayerData data;
 
     private Joystick joy;
     private Transform target; 
@@ -76,7 +78,7 @@ public class Player : MonoBehaviour
 
     private void Hit(float damage)
     {
-
+        // 血量 扣除 傷害值
     }
 
     private void Dead()
